@@ -1,0 +1,187 @@
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px var(--shadow);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Seção superior */
+.upper-data {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.upper-data img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.7);
+}
+
+.weather-data {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.location {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.temperature {
+    color: var(--text-primary);
+    font-size: 4rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    line-height: 1;
+}
+
+/* Seção inferior */
+.lower-data {
+    padding: 1.5rem;
+}
+
+.more-info-label {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.more-info-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.info-block {
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.info-block:hover {
+    transform: translateY(-2px);
+}
+
+.info-block-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.info-block-label fa-icon {
+    color: var(--accent-blue);
+}
+
+.info-block-value {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================ */
+/* TEMAS DINÂMICOS */
+/* ============================================ */
+
+/* Tema Frio (padrão - azul) */
+.container.cold-theme {
+    background: var(--card-bg);
+}
+
+.container.cold-theme .lower-data {
+    background: var(--card-bg);
+}
+
+.container.cold-theme .info-block {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container.cold-theme .info-block:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Tema Quente (laranja/amarelo) */
+.container.warm-theme {
+    background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%);
+}
+
+.container.warm-theme .lower-data {
+    background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%);
+}
+
+.container.warm-theme .info-block {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.container.warm-theme .info-block:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.container.warm-theme .info-block-label fa-icon {
+    color: #fbbf24;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .upper-data {
+        height: 240px;
+    }
+
+    .temperature {
+        font-size: 3.5rem;
+    }
+
+    .more-info-container {
+        grid-template-columns: 1fr;
+    }
+}
