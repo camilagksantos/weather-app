@@ -50,7 +50,7 @@ export class WeatherHomeComponent implements OnDestroy{
     this.weatherData$ = this.weatherService.getWeatherDataByCity(cityName).pipe(
       tap((data) => {
         this.errorMessage = '';
-        this.isWarmTheme = data.main.temp > 20;
+        this.isWarmTheme = data.main.feels_like > 20;
 
         if (this.isWarmTheme) {
           document.body.classList.add('warm-bg');
